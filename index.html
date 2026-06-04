@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport: width=device-width, initial-scale=1.0">
+    <title>Neon Dash - Geometry Dash Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Game Canvas -->
+        <canvas id="game-canvas" width="960" height="540"></canvas>
+
+        <!-- HUD Layer -->
+        <div id="hud" class="hidden">
+            <button id="pause-btn" class="hud-btn" title="Пауза">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            </button>
+            <div class="hud-progress-container">
+                <div class="hud-progress-bar">
+                    <div id="hud-progress-fill"></div>
+                </div>
+                <div id="hud-percent">0%</div>
+            </div>
+            <div class="hud-stats">
+                Попытка: <span id="hud-attempt">1</span>
+            </div>
+        </div>
+
+        <!-- Main Menu Screen -->
+        <div id="main-menu" class="screen">
+            <h1>Neon Dash</h1>
+            <div class="subtitle">A Neo-Geometric Rhythm Runner</div>
+
+            <!-- Skin Customization -->
+            <div class="skin-customizer">
+                <div class="preview-box">
+                    <div id="skin-preview"></div>
+                </div>
+                <div class="custom-options">
+                    <div class="color-picker-group">
+                        <span>Цвет 1:</span>
+                        <div class="color-dot selected" data-color="#00ffcc" style="background-color: #00ffcc;"></div>
+                        <div class="color-dot" data-color="#ff007f" style="background-color: #ff007f;"></div>
+                        <div class="color-dot" data-color="#ffdd00" style="background-color: #ffdd00;"></div>
+                        <div class="color-dot" data-color="#00bcff" style="background-color: #00bcff;"></div>
+                        <div class="color-dot" data-color="#9d00ff" style="background-color: #9d00ff;"></div>
+                    </div>
+                    <div class="color-picker-group">
+                        <span>Цвет 2:</span>
+                        <div class="color-dot" data-color2="#ffffff" style="background-color: #ffffff;"></div>
+                        <div class="color-dot selected" data-color2="#000000" style="background-color: #000000;"></div>
+                        <div class="color-dot" data-color2="#3a3a5a" style="background-color: #3a3a5a;"></div>
+                        <div class="color-dot" data-color2="#1b163a" style="background-color: #1b163a;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="play-btn" class="btn btn-primary">Играть</button>
+        </div>
+
+        <!-- Level Select Screen -->
+        <div id="level-select" class="screen hidden">
+            <h1>Выбор Уровня</h1>
+            
+            <div class="level-grid">
+                <div class="level-card" data-level="0">
+                    <div class="level-num">Уровень 1</div>
+                    <div class="level-name">Stereo Jump</div>
+                    <div class="level-progress">
+                        <div class="level-progress-fill" id="progress-0"></div>
+                    </div>
+                </div>
+                <div class="level-card" data-level="1">
+                    <div class="level-num">Уровень 2</div>
+                    <div class="level-name">Neo Flight</div>
+                    <div class="level-progress">
+                        <div class="level-progress-fill" id="progress-1"></div>
+                    </div>
+                </div>
+                <div class="level-card" data-level="2">
+                    <div class="level-num">Уровень 3</div>
+                    <div class="level-name">Cyber Realm</div>
+                    <div class="level-progress">
+                        <div class="level-progress-fill" id="progress-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="level-back-btn" class="btn btn-secondary">Назад</button>
+        </div>
+
+        <!-- Pause Screen -->
+        <div id="pause-screen" class="screen hidden">
+            <h1>Пауза</h1>
+            <div class="menu-row">
+                <button id="resume-btn" class="btn btn-primary">Продолжить</button>
+                <button id="restart-btn" class="btn btn-secondary">Заново</button>
+                <button id="exit-btn" class="btn btn-secondary">Выйти</button>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen hidden">
+            <h1 style="color: var(--secondary-neon);">Крах!</h1>
+            <div class="subtitle">Попытка провалилась</div>
+            <div class="menu-row">
+                <button id="retry-btn" class="btn btn-primary">Повторить</button>
+                <button id="go-exit-btn" class="btn btn-secondary">Меню</button>
+            </div>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victory-screen" class="screen hidden">
+            <h1 style="color: var(--primary-neon);">Победа!</h1>
+            <div class="subtitle">Уровень пройден на 100%!</div>
+            <button id="victory-ok-btn" class="btn btn-primary">Ура</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="levels.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
